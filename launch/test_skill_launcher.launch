@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>
+<arg name="robot"/>
+<group ns="$(arg robot)">
+        <node pkg="test_skill" type="test_node.py"
+            name="test_skill" output="screen" required="true" />
+</group>
+</launch>
