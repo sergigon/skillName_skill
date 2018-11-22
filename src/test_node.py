@@ -78,7 +78,7 @@ class TestSkill(Skill): ############# Cambiar esto #############
 		# servers and clients
 
 
-	def execute_cb(self, goal):
+	def execute_cb(self, goal): # Se activa cuando le envias un goal a la skill
 		"""
 		Spinner of the node.
 		"""
@@ -100,6 +100,8 @@ class TestSkill(Skill): ############# Cambiar esto #############
 			rospy.sleep(2.0)
 			
 			print("self._status: "+ str(self._status) + ", self.RUNNING:" + str(self.RUNNING))
+			
+			############### Si la skill esta activa: ###################
 			if self._status == self.RUNNING:
 				print ("Running...")
 				try:
@@ -120,12 +122,15 @@ class TestSkill(Skill): ############# Cambiar esto #############
 					self._result.result = 1
 					self._feedback.feedback = 0
 					
-
+			############################################################
+					
+			############# Si la skill no esta activa: ##################
 			else:
 				rospy.logwarn("[%s] Cannot send a goal when the skill is stopped" % pkg_name)
 				# ERROR
 				self._result.result = -1
 				self._feedback.feedback = 0
+			############################################################
 
 
 			self._feedback.feedback = self._counter
