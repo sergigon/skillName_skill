@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(test_skill)
+project(nameSkill_skill)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -13,8 +13,8 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   actionlib
   actionlib_msgs
+  common_msgs
 )
-find_package(multimedia_msgs REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -64,17 +64,17 @@ find_package(multimedia_msgs REQUIRED)
 # )
 
 ## Generate actions in the 'action' folder
-#add_action_files(
-#  FILES
-#  Test.action
-#)
+add_action_files(
+  FILES
+  NameSkill.action
+)
 
 ## Generate added messages and services with any dependencies listed here
-#generate_messages(
-#  DEPENDENCIES
-#  std_msgs
-#  actionlib_msgs
-#)
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+  actionlib_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -109,7 +109,7 @@ catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES test_skill
   CATKIN_DEPENDS roscpp rospy std_msgs roslib actionlib_msgs
-  DEPENDS multimedia_msgs
+  DEPENDS common_msgs
 )
 
 ###########
